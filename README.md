@@ -1,24 +1,10 @@
 # Ellen::Weather
-
-TODO: Write a gem description
-
-## Installation
-
-Add this line to your application's Gemfile:
-
-    gem 'ellen-weather'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install ellen-weather
+An ellen handler to weather from livedoor API
 
 ## Usage
-
-TODO: Write usage instructions here
+```
+@ellen weather <city name>
+```
 
 ## Contributing
 
