@@ -1,7 +1,7 @@
 require "faraday"
 require "faraday_middleware"
 
-module Ellen
+module Ruboty
   module Weather
     class Client
       LIVEDOOR_WEATHER_API_URL = 'http://weather.livedoor.com/forecast/webservice/json/v1'

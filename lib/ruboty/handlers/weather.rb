@@ -1,4 +1,4 @@
-module Ellen
+module Ruboty
   module Handlers
     class Weather < Base
       on /weather( me)? (?<keyword>\w+)/, name: "weather", description: "Fetch weather info from livedoor API"
@@ -10,7 +10,7 @@ module Ellen
       private
 
       def fetch(query)
-        Ellen::Weather::Client.new.get(query)
+        Ruboty::Weather::Client.new.get(query)
       end
     end
   end
