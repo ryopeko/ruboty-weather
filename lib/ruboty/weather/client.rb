@@ -19,8 +19,7 @@ module Ruboty
         end
       end
 
-      def get(city_name)
-        return 'undefined city name' unless city_code = cities[city_name.to_sym]
+      def get(city_code=default_city)
         response = @client.get("#{url}?city=#{city_code}").body
         response['forecasts'][0]['telop']
       end
@@ -33,6 +32,10 @@ module Ruboty
 
       def cities
         CITIES
+      end
+
+      def default_city
+        ENV['RUBOTY_WEATHER_CITY'] || 130010 #tokyo
       end
     end
   end

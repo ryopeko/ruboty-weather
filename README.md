@@ -1,9 +1,14 @@
 # Ruboty::Weather
 An ruboty handler to weather from livedoor API
 
+## ENV
+```
+RUBOTY_WEATHER_CITY - City code for livedoor API
+```
+
 ## Usage
 ```
-@ruboty weather <city name>
+@ruboty weather
 ```
 
 ## Contributing

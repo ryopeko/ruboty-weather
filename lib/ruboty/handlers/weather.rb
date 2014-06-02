@@ -1,16 +1,16 @@
 module Ruboty
   module Handlers
     class Weather < Base
-      on /weather( me)? (?<keyword>\w+)/, name: "weather", description: "Fetch weather info from livedoor API"
+      on /weather( me)?/, name: "weather", description: "Fetch weather info from livedoor API"
 
       def weather(message)
-        message.reply(fetch(message[:keyword]))
+        message.reply(fetch)
       end
 
       private
 
-      def fetch(query)
-        Ruboty::Weather::Client.new.get(query)
+      def fetch
+        Ruboty::Weather::Client.new.get
       end
     end
   end
