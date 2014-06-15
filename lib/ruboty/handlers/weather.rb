@@ -1,7 +1,7 @@
 module Ruboty
   module Handlers
     class Weather < Base
-      on /weather( me)?/, name: "weather", description: "Fetch weather info from livedoor API"
+      on /weather/, name: "weather", description: "Fetch weather info from livedoor API"
 
       def weather(message)
         message.reply(fetch)
