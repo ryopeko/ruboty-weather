@@ -20,8 +20,8 @@ module Ruboty
         today = forecasts[0]
         tomorrow = forecasts[1]
 
-        today_forecast = "#{today['date']}: #{today['telop']} (#{temperature_to_s(today['temperature'])})"
-        tomorrow_forecast = "#{tomorrow['date']}: #{tomorrow['telop']} (#{temperature_to_s(tomorrow['temperature'])})"
+        today_forecast = "#{today['date']}: #{emojilize!(today['telop'])} (#{temperature_to_s(today['temperature'])})"
+        tomorrow_forecast = "#{tomorrow['date']}: #{emojilize!(tomorrow['telop'])} (#{temperature_to_s(tomorrow['temperature'])})"
 
         [today_forecast, tomorrow_forecast].join("\n")
       end
@@ -34,6 +34,24 @@ module Ruboty
 
       def default_city
         ENV['RUBOTY_WEATHER_CITY'] || 130010 #tokyo
+      end
+
+      def emojilize!(telop)
+
+        telop.gsub!(/時々/, "\u{2194}")
+        telop.gsub!(/のち/, "\u{27A1}")
+
+        emojis = {
+          "晴" => "\u{2600}",
+          "曇" => "\u{2601}",
+          "雨" => "\u{2614}",
+          "雷" => "\u{26A1}",
+          "雪" => "\u{26C4}",
+        }.each do |k, v|
+          telop.gsub!(/#{k}/, v)
+        end
+
+        telop
       end
 
       def temperature_to_s(temperature)
