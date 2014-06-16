@@ -16,14 +16,10 @@ module Ruboty
       def get(city_code=default_city)
         response = @client.get("#{url}?city=#{city_code}").body
 
-        forecasts = response['forecasts']
-        today = forecasts[0]
-        tomorrow = forecasts[1]
-
-        today_forecast = "#{today['date']}: #{emojilize!(today['telop'])} (#{temperature_to_s(today['temperature'])})"
-        tomorrow_forecast = "#{tomorrow['date']}: #{emojilize!(tomorrow['telop'])} (#{temperature_to_s(tomorrow['temperature'])})"
-
-        [today_forecast, tomorrow_forecast].join("\n")
+        forecasts = response['forecasts'].map do |forecast|
+          "#{forecast['date']}: #{emojilize!(forecast['telop'])} (#{temperature_to_s(forecast['temperature'])})"
+        end
+        forecasts.join("\n")
       end
 
       private
