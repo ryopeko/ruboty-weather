@@ -1,5 +1,5 @@
 # Ruboty::Weather
-An ruboty handler to weather from livedoor API
+A ruboty handler to weather from livedoor API
 
 ## ENV
 ```
